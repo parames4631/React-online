@@ -1,4 +1,6 @@
 import React from 'react'
+import Button from '../styles/button/Button'
+import Title from '../styles/title/Title'
 import Logo from './Logo'
 
 const Header = () => {
@@ -22,8 +24,10 @@ const Header = () => {
         {id: 2, name: "Pepsi"}
     ]
 
+    const keyword = 'correct'
     return (
         <div>
+            <Title>Project React</Title>
             <h1>Hello {showMassage()}</h1>
             <br />
             {/* {
@@ -43,7 +47,7 @@ const Header = () => {
             {isLogin ? <Logo /> : <p>Unlock</p> } */}
 
             <button onClick={showMe}>Click me</button>
-
+            <Button onClick={showMe} keyword={keyword}> Click me</Button>
             <ul>
                 {
                 
