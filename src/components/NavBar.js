@@ -13,6 +13,7 @@ const NavBar = () => {
                     <Nav className="mr-auto">
                         {/* <Nav.Link href="#home">Home</Nav.Link> */}
                         <NavLink className="nav-link" activeClassName="active" to="/" exact>Home</NavLink>
+                        <NavLink className="nav-link" activeClassName="active" to="/product" exact>Product</NavLink>
                         <NavLink className="nav-link" activeClassName="active" to="/about">About</NavLink> 
                         <Nav.Link href="#link">Link</Nav.Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">

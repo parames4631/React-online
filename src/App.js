@@ -11,6 +11,7 @@ import {
   Link
 } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path='/'><HomePage /></Route>
+          <Route exact path='/product'><ProductPage /></Route>
           <Route path='/about'><AboutPage /></Route>
         </Switch>
         <Footer />
