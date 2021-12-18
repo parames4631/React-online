@@ -15,6 +15,7 @@ const NavBar = () => {
                         <NavLink className="nav-link" activeClassName="active" to="/" exact>Home</NavLink>
                         <NavLink className="nav-link" activeClassName="active" to="/product" exact>Product</NavLink>
                         <NavLink className="nav-link" activeClassName="active" to="/about">About</NavLink> 
+                        <NavLink className="nav-link" activeClassName="active" to="/contactme">ContactMe</NavLink> 
                         <Nav.Link href="#link">Link</Nav.Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

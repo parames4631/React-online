@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
 import ProductPage from "./pages/ProductPage";
+import ContactMe from "./pages/ContactMe";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route exact path='/'><HomePage /></Route>
           <Route exact path='/product'><ProductPage /></Route>
           <Route path='/about'><AboutPage /></Route>
+          <Route path='/contactme'><ContactMe /></Route>
         </Switch>
         <Footer />
         </Router>
