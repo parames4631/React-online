@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
-
+import DetailPage from "./pages/DetailPage";
 import HomePage from "./pages/HomePage";
 
 import {
@@ -25,6 +25,9 @@ function App() {
           <Route exact path='/product'><ProductPage /></Route>
           <Route path='/about'><AboutPage /></Route>
           <Route path='/contactme'><ContactMe /></Route>
+          <Route path="/detail/:id/title/:title"> <DetailPage/></Route>
+           
+          
         </Switch>
         <Footer />
         </Router>

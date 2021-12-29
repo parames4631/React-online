@@ -2,6 +2,7 @@ import React from 'react'
 import {Table, Image ,Badge,Spinner,Button} from "react-bootstrap"
 import axios from 'axios';
 import {RiSendPlaneFill} from "react-icons/ri"
+import { Link } from 'react-router-dom';
 const ProductPage = () => {
 
     const[product, setProduct] = React.useState([])
@@ -67,19 +68,19 @@ const ProductPage = () => {
                         <tbody>
                             
                             {
-                                product.map((p, index)=> {
-                                    return(
-                                        <tr key= {p.id}>
-                                        <td >{p.id}</td>
-                                        <td >{p.title}</td>
-                                        <td >{p.detail}</td>
-                                        <td >{p.date}</td>
-                                        <td > <Badge variant="dark">{p.view}</Badge>{' '}</td>
-                                        {/* <td >{p.picture}</td> */}
-                                        <td> <Image src={p.picture} rounded width={60}/></td>
-                                        <td><Button href="/detail" variant="dark">Click ME<RiSendPlaneFill/></Button></td>
+                                product.map((p, index) => {
+                                    return (
+                                        <tr key={p.id}>
+                                            <td>{p.id}</td>
+                                            <td>{p.title}</td>
+                                            <td>{p.detail}</td>
+                                            <td>{p.date}</td>
+                                            <td><Badge variant="primary">{p.view}</Badge></td>
+                                            <td><Image src={p.picture} rounded width={60}/></td>
+                                            <td><Button href={`/detail/${p.id}/title/${p.title}`} variant="dark">Click ME <RiSendPlaneFill/> </Button></td>
                                         </tr>
                                     )
+                
                                 })
                             }
 
