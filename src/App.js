@@ -3,7 +3,7 @@ import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import DetailPage from "./pages/DetailPage";
 import HomePage from "./pages/HomePage";
-
+import HospitalPage from "./pages/Hospital/HospitalPage";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,6 +13,7 @@ import {
 import AboutPage from "./pages/AboutPage";
 import ProductPage from "./pages/ProductPage";
 import ContactMe from "./pages/ContactMe";
+import Category from "./pages/Hospital/Catacory";
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
           <Route path='/about'><AboutPage /></Route>
           <Route path='/contactme'><ContactMe /></Route>
           <Route path="/detail/:id/title/:title"> <DetailPage/></Route>
-           
+          <Route path="/hospital"><HospitalPage/></Route>
+          <Route path="/category"><Category/></Route>
           
         </Switch>
         <Footer />

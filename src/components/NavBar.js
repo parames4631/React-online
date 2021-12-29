@@ -1,8 +1,10 @@
 import React from 'react'
-import { Navbar , Nav , NavDropdown , Form, FormControl , Button } from "react-bootstrap"
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap"
 import { NavLink } from "react-router-dom"
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 const NavBar = () => {
+    const history = useHistory()
     return (
         <div>
             <Navbar bg="light" expand="lg">
@@ -14,15 +16,21 @@ const NavBar = () => {
                         {/* <Nav.Link href="#home">Home</Nav.Link> */}
                         <NavLink className="nav-link" activeClassName="active" to="/" exact>Home</NavLink>
                         <NavLink className="nav-link" activeClassName="active" to="/product" exact>Product</NavLink>
-                        <NavLink className="nav-link" activeClassName="active" to="/about">About</NavLink> 
-                        <NavLink className="nav-link" activeClassName="active" to="/contactme">ContactMe</NavLink> 
+                        <NavLink className="nav-link" activeClassName="active" to="/about">About</NavLink>
+                        <NavLink className="nav-link" activeClassName="active" to="/contactme">ContactMe</NavLink>
+
                         <Nav.Link href="#link">Link</Nav.Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                        <NavDropdown title="Workshop Pagination" id="basic-nav-dropdown">
+                            <NavDropdown.Item onClick={() => {
+                                history.replace("/hospital")
+                            }}>Hospital List</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                            <NavDropdown.Item onClick={() => {
+                                history.replace("/category")
+                            }}>
+                                News Category
+
+                            </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Form inline>
