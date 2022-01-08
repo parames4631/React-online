@@ -14,6 +14,7 @@ import AboutPage from "./pages/AboutPage";
 import ProductPage from "./pages/ProductPage";
 import ContactMe from "./pages/ContactMe";
 import Category from "./pages/Hospital/Catacory";
+import IndexPage from "./pages/Hospital/IndexPage";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path='/contactme'><ContactMe /></Route>
           <Route path="/detail/:id/title/:title"> <DetailPage/></Route>
           <Route path="/hospital"><HospitalPage/></Route>
-          <Route path="/category"><Category/></Route>
+          <Route path="/category"><Category/><IndexPage/></Route>
           
         </Switch>
         <Footer />
