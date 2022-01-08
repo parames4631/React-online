@@ -13,8 +13,9 @@ import {
 import AboutPage from "./pages/AboutPage";
 import ProductPage from "./pages/ProductPage";
 import ContactMe from "./pages/ContactMe";
-import Category from "./pages/Hospital/Catacory";
+import Category from "./pages/Hospital/Category";
 import IndexPage from "./pages/Hospital/IndexPage";
+import CreatePage from "./pages/category/CreatePage";
 
 function App() {
   return (
@@ -30,7 +31,16 @@ function App() {
           <Route path="/detail/:id/title/:title"> <DetailPage/></Route>
           <Route path="/hospital"><HospitalPage/></Route>
           <Route path="/category"><Category/><IndexPage/></Route>
-          
+          <Route path="/category"
+            render={({ match: { url } }) => (
+              <>
+              <Route path={`${url}/`} exact><IndexPage /></Route>
+              <Route path={`${url}/create`}><CreatePage/></Route>
+              <Route path={`${url}/edit/:id`}><Category/></Route>
+              </>
+
+            )}>
+          </Route>
         </Switch>
         <Footer />
         </Router>
