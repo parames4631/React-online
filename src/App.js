@@ -20,6 +20,8 @@ import { ToastProvider } from "react-toast-notifications";
 import CategoryPage from "./pages/category/CategoryPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import MemberPage from "./pages/MemberPage.js";
+import PrivateRoute from "./guard/auth";
 
 function App() {
   return (
@@ -48,6 +50,9 @@ function App() {
           <Route path="/upload">
             <UploadPage />
           </Route>
+          <PrivateRoute path="/member">
+            <MemberPage />
+          </PrivateRoute>
           <Route path="/register">
             <RegisterPage />
           </Route>
