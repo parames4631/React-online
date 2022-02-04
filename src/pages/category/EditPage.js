@@ -13,8 +13,10 @@ const schema = yup
   })
   .required();
 
-const CreatePage = () => {
+const EditPage = () => {
   const [error, setError] = React.useState(null);
+
+  const { id } = useParams();
 
   const { addToast } = useToasts();
 
@@ -24,23 +26,37 @@ const CreatePage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const onSubmit = async (data) => {
-    //console.log(data)
+    console.log(data);
     try {
       const apiURL = "https://api.codingthailand.com/api/category";
-      const resp = await axios.post(apiURL, {
+      const resp = await axios.put(apiURL, {
+        id: id,
         name: data.name,
       });
-      //alert(resp.data.message)
-      addToast(resp.data.message, { appearance: "success", autoDismiss: true });
+      //alert('updateเสร็จสิ้น')
+      addToast("updateเสร็จสิ้น", { appearance: "success", autoDismiss: true });
       history.goBack();
     } catch (error) {
       setError(error);
     }
+  };
+
+  React.useEffect(() => {
+    getData(id);
+  }, [id]);
+
+  const getData = async (id) => {
+    const resp = await axios.get(
+      "https://api.codingthailand.com/api/category/" + id
+    );
+    //console.log(resp.data)
+    setValue("name", resp.data.name);
   };
 
   if (error) {
@@ -56,7 +72,7 @@ const CreatePage = () => {
     <div className="container">
       <div className="row">
         <div className="col-md-12 mt-2">
-          <h2>Add New Category</h2>
+          <h2>Edit Category</h2>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group controlId="name">
               <Form.Label>Category New</Form.Label>
@@ -74,7 +90,7 @@ const CreatePage = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Submit
+              Update
             </Button>
           </Form>
         </div>
@@ -83,4 +99,4 @@ const CreatePage = () => {
   );
 };
 
-export default CreatePage;
+export default EditPage;
