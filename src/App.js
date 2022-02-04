@@ -48,10 +48,10 @@ function App() {
           <Route path="/upload">
             <UploadPage />
           </Route>
-          <Route path="/Register">
+          <Route path="/register">
             <RegisterPage />
           </Route>
-          <Route path="/Login">
+          <Route path="/login">
             <LoginPage />
           </Route>
           <Route
