@@ -24,12 +24,21 @@ import MemberPage from "./pages/MemberPage.js";
 import PrivateRoute from "./guard/auth";
 import UserStoreProvider from "./context/UserContext";
 
+// redux setup
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from "./redux/reducers/index";
+ 
+const store = createStore(rootReducer)
+ 
 function App() {
   return (
-    <UserStoreProvider>
-      <ToastProvider placement="top-center">
+    <Provider store={store}>
+      <UserStoreProvider>
+      <ToastProvider>
         <Router>
           <NavBar />
+ 
           <Switch>
             <Route exact path="/">
               <HomePage />
@@ -37,11 +46,11 @@ function App() {
             <Route path="/about">
               <AboutPage />
             </Route>
+            <Route path="/contactme">
+              <ContactMe />
+            </Route>
             <Route path="/product">
               <ProductPage />
-            </Route>
-            <Route path="/contact">
-              <ContactMe />
             </Route>
             <Route path="/detail/:id/title/:title">
               <DetailPage />
@@ -49,25 +58,36 @@ function App() {
             <Route path="/hospital">
               <HospitalPage />
             </Route>
-            <Route path="/upload">
-              <UploadPage />
-            </Route>
-            <PrivateRoute path="/member">
-              <MemberPage />
-            </PrivateRoute>
-            <Route path="/register">
-              <RegisterPage />
-            </Route>
+ 
             <Route path="/login">
               <LoginPage />
             </Route>
+ 
+            <Route path="/register">
+              <RegisterPage />
+            </Route>
+ 
+            <Route path="/upload">
+              <UploadPage />
+            </Route>
+ 
+            <PrivateRoute path="/member">
+              <MemberPage />
+            </PrivateRoute>
+ 
+            {/* makesense */}
             <Route
               path="/category"
               render={({ match: { url } }) => (
                 <>
                   <Route path={`${url}/`} exact>
-                    <CategoryPage />
+                    <IndexPage />
                   </Route>
+ 
+                  <Route path={`${url}/create`}>
+                    <CreatePage />
+                  </Route>
+ 
                   <Route path={`${url}/edit/:id`}>
                     <EditPage />
                   </Route>
@@ -75,11 +95,13 @@ function App() {
               )}
             ></Route>
           </Switch>
+ 
           <Footer />
         </Router>
       </ToastProvider>
     </UserStoreProvider>
+    </Provider>
   );
 }
-
+ 
 export default App;
