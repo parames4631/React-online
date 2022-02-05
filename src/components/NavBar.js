@@ -8,16 +8,17 @@ const NavBar = () => {
   const userStore = React.useContext(UserStoreContext)
 
   //const [profile, setProfile] = React.useState(null);
-  // const getProfile = () => {
-  //   // localStorage.getItem('profile')
-  //   const profilValue = JSON.parse(localStorage.getItem("profile"));
-  //   if (profilValue) {
-  //     setProfile(profilValue);
-  //   }
-  // };
-  // React.useEffect(() => {
-  //   getProfile();
-  // }, []);
+     const getProfile = () => {
+     localStorage.getItem('profile')
+     const profilValue = JSON.parse(localStorage.getItem("profile"));
+     if (profilValue) {
+       //setProfile(profilValue);
+       userStore.updateProfile(profilValue);
+     }
+     } ;
+  React.useEffect(() => {
+    getProfile();
+  }, []);
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("profile");
@@ -80,19 +81,19 @@ const NavBar = () => {
               </NavLink>
             </Nav>
             {
-            userStore.profile ? (
-              <span className="nav-text">Welcome {userStore.profile.name} 
-              <button className="btn btn-danger ml-2" onClick={logout}>Logout</button> 
-              </span>
-            ) : (
-              <>
-                <Nav>
-                  <NavLink className="nav-link" activeClassName="active" to="/register">Register</NavLink>
-                  <NavLink className="nav-link" activeClassName="active" to="/login">Login</NavLink>
-                </Nav>
-              </>
-            )
-          }
+              userStore.profile ? (
+                <span className="nav-text">Welcome {userStore.profile.name}
+                  <button className="btn btn-danger ml-2" onClick={logout}>Logout</button>
+                </span>
+              ) : (
+                <>
+                  <Nav>
+                    <NavLink className="nav-link" activeClassName="active" to="/register">Register</NavLink>
+                    <NavLink className="nav-link" activeClassName="active" to="/login">Login</NavLink>
+                  </Nav>
+                </>
+              )
+            }
           </Navbar.Collapse>
         </Container>
       </Navbar>
