@@ -24,10 +24,12 @@ import MemberPage from "./pages/MemberPage.js";
 import PrivateRoute from "./guard/auth";
 import UserStoreProvider from "./context/UserContext";
 
+
 // redux setup
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import rootReducer from "./redux/reducers/index";
+import Cartpage from "./pages/Cartpage";
  
 const store = createStore(rootReducer)
  
@@ -58,7 +60,9 @@ function App() {
             <Route path="/hospital">
               <HospitalPage />
             </Route>
- 
+            <Route path="/cartpage">
+              <Cartpage />
+            </Route>
             <Route path="/login">
               <LoginPage />
             </Route>

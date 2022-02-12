@@ -3,11 +3,18 @@ import {Table, Image ,Badge,Spinner,Button} from "react-bootstrap"
 import axios from 'axios';
 import {RiSendPlaneFill} from "react-icons/ri"
 import { Link } from 'react-router-dom';
+import { addtoCart } from '../redux/actions/cartAction';
+import { useDispatch, useSelector } from 'react-redux'
+
 const ProductPage = () => {
 
     const[product, setProduct] = React.useState([])
     const[loading, setLoading] = React.useState(false)
     const[error, setError] = React.useState(null)
+
+    const dispatch = useDispatch()
+    const cart = useSelector((state) => state.cartReducer.cart)
+    const total = useSelector((state) => state.cartReducer.total)
 
     const getData = async () =>{
         try{
@@ -48,6 +55,18 @@ const ProductPage = () => {
             </div>
         )
     }
+    const addCart = (p) => {
+         const product ={
+             id: p.id,
+             name: p.title,
+             price: p.view, //สมมติ view = price
+             qty: 1
+         }
+
+        // call action
+        dispatch(addtoCart(product, cart))
+        //console.log(p)
+    }
 
     return (
         <div className="container">
@@ -77,7 +96,10 @@ const ProductPage = () => {
                                             <td>{p.date}</td>
                                             <td><Badge variant="primary">{p.view}</Badge></td>
                                             <td><Image src={p.picture} rounded width={60}/></td>
-                                            <td><Button href={`/detail/${p.id}/title/${p.title}`} variant="dark">Click ME <RiSendPlaneFill/> </Button></td>
+                                            <td><Button href={`/detail/${p.id}/title/${p.title}`} variant="dark">Click ME <RiSendPlaneFill/> </Button>
+                                            <Button variant="outline-info" className="ml-2" onClick= { ()=> addCart(p) }>Buy </Button>
+                                            </td>
+                                            
                                         </tr>
                                     )
                 
